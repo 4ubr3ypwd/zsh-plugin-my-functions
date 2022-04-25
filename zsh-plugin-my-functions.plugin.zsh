@@ -22,6 +22,19 @@ function lwpcliconfig {
 }
 
 ###
+ # Export a DB using WP-CLI.
+ #
+ # ...and compress.
+ #
+ # E.g: dbx
+ #
+ # @since Monday, April 25, 2022
+ ##
+function wpdbx {
+	wp db export - | gzip -9 -f > $1.tar.gz
+}
+
+###
  # Notifications
  #
  # E.g: not "Title" "SubTitle" "Message"
