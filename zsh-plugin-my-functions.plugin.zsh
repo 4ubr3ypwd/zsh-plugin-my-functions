@@ -31,7 +31,7 @@ function lwpcliconfig {
  # @since Monday, April 25, 2022
  ##
 function wpdbx {
-	wp db export - | gzip -9 -f > $1.tar.gz
+	wp db export - | gzip -9 -f > "$1.tar.gz"
 }
 
 ###
