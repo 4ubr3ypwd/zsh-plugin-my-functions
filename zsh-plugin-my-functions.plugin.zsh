@@ -26,12 +26,21 @@ function lwpcliconfig {
  #
  # ...and compress.
  #
- # E.g: dbx
- #
  # @since Monday, April 25, 2022
  ##
 function wpdbx {
 	wp db export - | gzip -9 -f > "$1.tar.gz"
+}
+
+###
+ # Import a DB using WP-CLI.
+ #
+ # ...that's compressed.
+ #
+ # @since Tuesday, April 26, 2022
+ ##
+function wpdbi {
+	gzip -c -d "$1" | wp db import -
 }
 
 ###
