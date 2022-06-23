@@ -107,5 +107,12 @@ function showindock {
  # @since Thursday, June 23, 2022
  ##
 function serve {
-	sudo php -S "$1:80"
+
+	if [ -z "$1" ]; then
+		domain="localhost"
+	else
+		domain="$1"
+	fi
+
+	sudo php -S "$domain:80"
 }
