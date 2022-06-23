@@ -98,21 +98,3 @@ function hideindock {
 function showindock {
 	/usr/libexec/PlistBuddy -c 'Delete :LSUIElement' "$1/Contents/Info.plist" &> /dev/null
 }
-
-###
- # Serve a website using PHP -S
- #
- # E.g: serve "domain.tld"
- #
- # @since Thursday, June 23, 2022
- ##
-function serve {
-
-	if [ -z "$1" ]; then
-		domain="localhost"
-	else
-		domain="$1"
-	fi
-
-	sudo php -S "$domain:80"
-}
