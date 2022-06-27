@@ -98,3 +98,33 @@ function hideindock {
 function showindock {
 	/usr/libexec/PlistBuddy -c 'Delete :LSUIElement' "$1/Contents/Info.plist" &> /dev/null
 }
+
+###
+ # Serve a website using PHP -S
+ #
+ # E.g: serve @7.4 "domain.tld"
+ #
+ # @since Thursday, June 23, 2022
+ ##
+function serve {
+
+	domain="$2"
+
+	if [ -z "$2" ]; then
+		domain="localhost"
+	fi
+
+	case $1 in
+
+		7.4)
+			version="/opt/homebrew/Cellar/php@7.4/7.4.30/bin/php"
+			;;
+
+		*)
+			version="php"
+			;;
+	esac
+
+
+	sudo "$version" -S "$domain:80"
+}
