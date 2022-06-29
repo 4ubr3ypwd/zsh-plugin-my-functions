@@ -102,29 +102,38 @@ function showindock {
 ###
  # Serve a website using PHP -S
  #
- # E.g: serve @7.4 "domain.tld"
+ # E.g: serve "domain.tld" 7.4
  #
  # @since Thursday, June 23, 2022
  ##
 function serve {
 
-	domain="$2"
+	domain="$1"
 
-	if [ -z "$2" ]; then
+	if [ -z "$1" ]; then
 		domain="localhost"
 	fi
 
-	case $1 in
+	version="$2"
+
+	if [ -z "$2" ]; then
+		version="8.1"
+	fi
+
+	case $version in
 
 		7.4)
 			version="/opt/homebrew/Cellar/php@7.4/7.4.30/bin/php"
 			;;
 
+		8.1)
+			version="/opt/homebrew/Cellar/php/8.1.7/bin/php"
+			;;
+
 		*)
-			version="php"
+			version=$(which php)
 			;;
 	esac
-
 
 	sudo "$version" -S "$domain:80"
 }
